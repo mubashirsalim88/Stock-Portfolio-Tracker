@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-700 text-white py-20">
+  <div class="container mx-auto text-center">
+    <h1 id="welcome-message" class="text-6xl font-extrabold mb-4">Invest Smarter. Trade Better.</h1>
+    <p class="text-2xl mb-8">Join <span class="text-yellow-400">Stock Insight</span> for real-time data and expert recommendations.</p>
+    <a href="{% url 'add_stock' %}" class="bg-yellow-400 text-indigo-900 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-yellow-300 transition-all duration-300">
+      Let's Start Something – Add Your First Stock!
+    </a>
+    <p class="mt-4 text-sm">No credit card required</p>
+  </div>
+</section>
+
+<!-- Portfolio Overview Section -->
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-10 text-indigo-900">Your Portfolio at a Glance</h2>
+    <p class="text-lg mb-8">Track your investments and see how they perform over time.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Total Value</h3>
+        <p class="text-gray-700 text-xl">${{ total_value|floatformat:2 }}</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Daily Change</h3>
+        <p class="text-gray-700 text-xl">${{ daily_change|floatformat:2 }}</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Stocks Held</h3>
+        <p class="text-gray-700 text-xl">{{ stock_count }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visual Portfolio Analysis Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-10 text-indigo-900">Visualize Your Investments</h2>
+    <p class="text-lg mb-8">Get insights into your portfolio performance.</p>
+    <a href="{% url 'portfolio_view' %}" class="bg-indigo-600 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-indigo-500 transition-all duration-300">
+      View Full Portfolio
+    </a>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-gray-900 text-white">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-10">What Our Users Are Saying</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <p class="text-xl italic mb-4">"Stock Insight's real-time charts helped me make better decisions and improve my returns by 40%!"</p>
+        <p class="font-bold">- Harish, Trader</p>
+      </div>
+      <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <p class="text-xl italic mb-4">"The recommendations are spot on. I wouldn’t trade without Stock Insight now."</p>
+        <p class="font-bold">- Simran, Investor</p>
+      </div>
+      <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <p class="text-xl italic mb-4">"The alerts keep me ahead of the game. No more missing important stock movements."</p>
+        <p class="font-bold">- Anuj, Day Trader</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const element = document.getElementById('welcome-message');
+    const text = "Welcome to Stock Insight";
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        element.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100); // Adjust typing speed here
+      }
+    }
+
+    type();
+  });
+</script>
+{% endblock content %}

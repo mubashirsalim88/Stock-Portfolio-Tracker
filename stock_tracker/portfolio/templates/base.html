@@ -5,21 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Stock Portfolio{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="bg-gray-100">
-    <nav class="bg-blue-600 p-4 text-white">
-        <div class="container mx-auto flex justify-between">
-            <div class="font-bold text-lg">Stock Portfolio</div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gradient-to-r from-indigo-600 to-blue-600 p-4 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="font-bold text-lg">Stock Portfolio Tracker</div>
             <div>
-                <a href="{% url 'portfolio_view' %}" class="mr-4">Portfolio</a>
-                <a href="{% url 'add_stock' %}">Add Stock</a>
+                <a href="{% url 'index_view' %}" class="mr-4 hover:text-yellow-300 transition-colors duration-300">Home</a>
+                <a href="{% url 'portfolio_view' %}" class="mr-4 hover:text-yellow-300 transition-colors duration-300">Portfolio</a>
+                <a href="{% url 'add_stock' %}" class="hover:text-yellow-300 transition-colors duration-300">Add Stock</a>
             </div>
         </div>
     </nav>
+    
+    <!-- Main Content -->
     <div class="container mx-auto p-4">
         {% block content %}
         <!-- Page content goes here -->
         {% endblock %}
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+        <div class="container mx-auto">
+            <p>&copy; 2024 Stock Portfolio Tracker. All rights reserved.</p>
+            <p><a href="#" class="text-yellow-400 hover:underline">Privacy Policy</a></p>
+        </div>
+    </footer>
 </body>
 </html>
